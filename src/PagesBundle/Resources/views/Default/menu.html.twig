@@ -1,0 +1,8 @@
+
+ {% for mespages in pages %} 
+
+      <a href="{{path('page', {'slug':mespages.slug})}}">{{mespages.titre|raw}}</a> <br/>
+
+ {% endfor %}
+
+

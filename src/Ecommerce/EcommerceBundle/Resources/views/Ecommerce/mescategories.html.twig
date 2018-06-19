@@ -1,0 +1,55 @@
+{%extends "::base.html.twig" %}
+{%block body%}
+<div class="container">
+    <div class="row">
+       {% include "::navigation.html.twig" %} 
+          <div class="span9">
+
+           <ul class="thumbnails">
+
+	           {% for categ in cat %}
+	                <li >
+	                    <div class="thumbnail">
+	                    {#   <img src=" {{categ.image.path}} " alt="{{categ.image.alt}}" width="250" height="250" /> #}
+                            <img src="{{asset('uploads/' ~ categ.image.path) }}" alt="Omega Vision" width="300" height="300" >
+	                        <div class="caption">
+	                            <h4>{{categ.nom}}</h4>
+	                            <p>{{categ.prix}}</p>
+                                {#
+	                            <a class="btn btn-primary" href="{{path('ecommerce_produit', {'id' : categ.id})}}">Plus d'infos</a>
+	                            <a class="btn btn-success" href="{{path('ecommerce_panier')}}">Ajouter au panier</a>
+                                #}
+                                <a class="btn btn-primary" href="{{path('ecommerce_produit', {'id' : categ.id})}}">Plus d'infos</a>
+                                {% if panier[categ.id] is not defined %}
+                                    <a class="btn btn-success" href="{{path('ecommerce_ajouter',  {'id' : categ.id})}}">Ajouter au panier</a>
+                                {% else %}
+                                    <nav class="btn btn-danger"> deja au panier</nav>
+                                {% endif %}
+	                        </div>
+	                    </div>
+	                </li>
+	            {% endfor %}
+            </ul> 
+          </div>
+
+        <div class="navigation" style="text-align: center">
+            {{ knp_pagination_render(cat) }}
+        </div>
+{#
+            <div class="pagination">
+                <ul>
+                    <li class="disabled"><span>Précédent</span></li>
+                    <li class="disabled"><span>1</span></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">Suivant</a></li>
+                </ul>
+            
+
+            </div>
+ #}
+    </div>
+</div>
+{%endblock%}

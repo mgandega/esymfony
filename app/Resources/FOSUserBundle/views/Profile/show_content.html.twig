@@ -1,0 +1,19 @@
+{#       {% include '::navigation.html.twig' %} #}
+        
+        <div class="span9">
+            <h2>Mes informations</h2>
+            <div id="collapseOne" class="accordion-body collapse in">
+                <div class="accordion-inner">
+                    
+                    <div class="span4">
+                        <h4>Modifier mes informations</h4>
+                       
+						<div class="fos_user_user_show">
+						    <p>  Votre prenom: {{ user.username }}</p>
+						    <p>  Votre e-mail: {{ user.email }}</p>
+						</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>

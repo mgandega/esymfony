@@ -1,0 +1,44 @@
+services:
+#    ecommerce_ecommerce.example:
+#        class: Ecommerce\EcommerceBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    setNewFacture:
+        class: Ecommerce\EcommerceBundle\Services\GetFacture
+        arguments: ["@service_container"]
+
+    setNewReference:
+        class: Ecommerce\EcommerceBundle\Services\GetReference
+        arguments: ["@security.token_storage", "@doctrine.orm.entity_manager"]
+
+    price:
+        class: Ecommerce\EcommerceBundle\Twig\Extension\TvaExtension
+        tags:
+            - { name: twig.extension }
+
+    montantTva:
+        class: Ecommerce\EcommerceBundle\Twig\Extension\MontantTvaExtension
+        tags:
+            - { name: twig.extension }
+
+    redirectionListener:
+        class: Ecommerce\EcommerceBundle\Listener\RedirectListener
+        arguments: ["@service_container", "@session"]
+        tags:
+           - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+#    setNewFacture:
+#        class: Ecommerce\EcommerceBundle\Services\html2pdf
+    oc_platform.bigbrother.message_notificator:
+        class: Ecommerce\EcommerceBundle\Mail\MessageNotificator
+        arguments:
+           - "@mailer"
+
+    oc_platform.bigbrother.message_listener:
+        class: Ecommerce\EcommerceBundle\Mail\MessageListener
+        arguments:
+            - "@oc_platform.bigbrother.message_notificator"
+#            - ["sadibou", "marine", "pauline"]
+            - "@doctrine.orm.default_entity_manager"
+ #       tags:
+ #           - { name: doctrine.repository_service }

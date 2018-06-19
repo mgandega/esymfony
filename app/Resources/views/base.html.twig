@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+    <title> {% block motscles %} Omega Vision {% endblock %} </title>
+    <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/bootstrap-responsive.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/style.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/font-awesome.css')}}" />
+    <link rel="stylesheet" href="{{asset('ckeditor/contents.css')}}" />
+
+</head>
+<body>
+
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+
+            <a class="brand" href="{{ path('ecommerce_homepage') }}">Omega Vision</a>
+            <div class="nav-collapse collapse">
+                
+            {{ render(controller('EcommerceEcommerceBundle:Ecommerce:recherche')) }}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
+{% block body %}
+{% endblock %}  
+    
+
+
+
+    <hr />
+
+    <footer id="footer" class="vspace20">
+        <div class="container">
+            <div class="row">
+                <div class="span4 offset1">
+                    <h4>Informations</h4>
+                    <p class="nav nav-stacked">
+                       {{ render(controller('PagesBundle:Default:menu')) }}
+                    {#
+                        <li><a href="texte.php">CGV</a>
+                        <li><a href="texte.php">Mentions légales</a>
+                    #}
+                    </p>
+                    
+                </div> 
+
+                <div class="span4">
+                    <h4>Notre entrepôt</h4>
+                    <p><i class="icon-map-marker"></i><strong>Adresse</strong>: {{ adresse }}</p>
+                </div>
+
+                <div class="span2">
+                    <h4>Nous contacter</h4>
+                    <p><i class="icon-phone"></i>&nbsp;<strong>Tel</strong>: {{ telephone }}</p>
+                    <p><i class="icon-print"></i>&nbsp;<strong>Fax</strong>: {{ fax }}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="span4">
+                    <p>&copy; Copyright {{ "now"|date("Y") }}- Mon site de teste</p>
+                </div>
+            </div>
+        </div>
+    </footer>   
+    <script src="{{asset('js/jquery-1.10.0.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.js')}}"></script>
+<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+
+</body>
+</html>

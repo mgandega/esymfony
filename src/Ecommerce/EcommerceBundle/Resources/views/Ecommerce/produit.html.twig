@@ -1,0 +1,60 @@
+{% extends "::base.html.twig" %}
+ {% block motscles %} {{rep.nom}} {% endblock %} 
+{%block body%}
+
+	<div class="container">
+		<div class="row">
+            <?php include '../layout/col-left.php'; ?>
+			
+			<div class="span9">
+				<div class="row">
+					<div class="span5">
+				{#		<img src="{{asset('uploads/' ~ rep.image.path) }}" alt="DevAndClick" width="270" height="310"> #}
+
+						<img src="{{ rep.image.AssetPath|imagine_filter('produits_thumb') }}" alt="{{asset('uploads/' ~ rep.image.name) }}" width="470" height="310">
+					</div>
+    {% if panier[rep.id] is not defined %}
+					<div class="span4">
+						<h4>{{rep.nom}}</h4>
+									<p>{{rep.description}}</p>
+						<h4>{{rep.prix}}</h4>
+							<form action="{{path('ecommerce_ajouter',  {'id' : rep.id} )}}" method="get"> 
+					
+
+									<select name="qte" class="span1">
+										{% for i in 1..10 %}
+											 <option value="{{i}}">
+												 {{i}}
+											 </option>
+										{% endfor %}
+
+
+									</select>
+
+									<div>
+									<button class="btn btn-primary">Ajouter au panier</button>
+									</div>
+							</form>
+						
+{#						
+						
+
+						<form method="POST" action="produit.html.twig">
+
+						      {{form(formulaire)}}
+						
+						</form>
+#}	
+					</div>
+         {% else %}
+	            	<nav class="btn btn-danger"> Le produit est deja au panier</nav>
+		<a href="{{ path('ecommerce_homepage') }}">Retourner aux produits</a>
+	{% endif %}
+
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+{%endblock%}

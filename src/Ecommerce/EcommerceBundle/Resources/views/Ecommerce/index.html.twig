@@ -1,0 +1,70 @@
+{%extends "::base.html.twig" %}
+
+{%block body%}
+  {#  {{ 'Bonjour tout le monde'|trans }} #}
+    {% for flashMessage in app.session.flashbag.get('mysuccess') %}
+        <div class="alert alert-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+<div class="container">
+    <div class="row">
+        <div class="span3" style="margin-right: 20px;">
+
+            {{   include("::navigation.html.twig") }}
+            {{   render(controller("EcommerceEcommerceBundle:Ecommerce:menu")) }}
+        </div>
+
+
+        <div class="span8">
+
+            <ul class="thumbnails">
+
+                {% for index in ind %}
+
+                    <li class="span3">
+                        <div class="thumbnail">
+                     {#     <img src="{{asset('uploads/' ~ index.image.path) }}" alt="Omega Vision" width="300" height="300" > #}
+                    
+                    {# ici on a pas besoin de faire un asset() car le filtre le gere tout seul #}
+                            <img src="{{ index.image.AssetPath|imagine_filter('index_thumb') }}" alt="{{index.image.name  }}" width="300" height="200" > 
+                            <div class="caption">
+                                <h4>{{index.nom}}</h4>
+                                 <p>{{index.prix|price(index.tva.multiplicate)}} €</p>
+                                <a class="btn btn-primary" href="{{path('ecommerce_produit', {'id' : index.id})}}">Plus d'infos</a>
+                    {% if panier[index.id] is not defined %}
+                                <a class="btn btn-success" href="{{path('ecommerce_ajouter',  {'id' : index.id})}}">Ajouter au panier</a>
+                    {% else %}
+                                <nav class="btn btn-danger"> deja au panier</nav>
+                    {% endif %}
+
+                        
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+
+        <div class="navigation" style="text-align: center">
+            {{ knp_pagination_render(ind) }}
+        </div>
+       {#     <div class="pagination">
+                <ul>
+                    <li class="disabled"><span>Précédent</span></li>
+                    <li class="disabled"><span>1</span></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">Suivant</a></li>
+                </ul>
+        </div>
+#}
+    </div>
+
+
+
+</div>
+{%endblock%}

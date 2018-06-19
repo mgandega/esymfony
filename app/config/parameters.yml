@@ -1,0 +1,19 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: localhost
+    database_port: null
+    database_name: ecommerce
+    database_user: root
+    database_password: root
+    mailer_transport: smtp
+    mailer_port: 587
+    mailer_host: smtp.gmail.com
+    mailer_encryption: tls
+    mailer_user: mgandega@gmail.com
+    mailer_password: informatique
+    secret: ThisTokenIsNotSoSecretChangeIt
+twig:
+    globals:
+        telephone: '07 62 65 67 18'
+        fax: '07 62 65 67 18'
+        adresse: '6, allee d''arz - Antony'

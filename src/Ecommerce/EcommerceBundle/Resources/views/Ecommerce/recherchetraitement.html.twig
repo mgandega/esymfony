@@ -1,0 +1,45 @@
+{% extends "::base.html.twig" %}
+{% block motscles %}
+	{% for marepo in cat %}
+	     {{marepo.nom}} 
+	{% endfor %}
+{% endblock %}
+
+{%block body%}
+
+
+	{% for marepo in cat %}
+	    {# dump(marepo) #}
+
+			{% if mapage %}
+			    {% if marepo.disponible == 1 %}
+			            <ul class="thumbnails">
+			                {% for index in cat %}
+			                    <li class="span3">
+			                        <div class="thumbnail">
+			                      {#      <img src="{{marepo.image.path}} " alt="DevAndClick" width="300" height="300" > #}
+			                  <img src="{{ marepo.image.AssetPath|imagine_filter('index_thumb') }}" alt="{{marepo.image.name  }}" width="300" height="200" >
+			                            <div class="caption">
+			                                <h4>{{marepo.nom}}</h4>
+			                                <p>{{marepo.prix}} €</p>
+			                                <a class="btn btn-primary" href="{{path('ecommerce_produit', {'id' : marepo.id})}}">Plus d'infos</a>
+			                                <a class="btn btn-success" href="{{path('ecommerce_panier', {'id' : marepo.id})}}">Ajouter au panier</a>
+			                            </div>
+			                        </div>
+			                    </li>
+			                {% endfor %}
+			            </ul>
+
+			    {% endif %}
+
+
+            {% endif %}
+
+
+
+	
+	{% endfor %}
+
+	   
+
+{% endblock %}

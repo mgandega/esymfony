@@ -1,0 +1,48 @@
+{% extends "::base.html.twig" %}
+{%block body%}
+	<div class="container">
+		<div class="row">
+
+            <?php include '../layout/col-left-co.php'; ?>
+				
+				<div class="span9">
+                    {% for flashMessage in app.session.flashbag.get('mysuccess') %}
+                        <div class="alert alert-success">
+                            {{ flashMessage }}
+                        </div>
+                    {% endfor %}
+                    <h2>Factures</h2>
+                    <form>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Références</th>
+                                <th>Date</th>
+                                <th>Prix TTC</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for facture in factures %}
+                            <tr>
+
+                                    <td><a href="#">{{facture.reference }}</a></td>
+                                    <td>{{facture.date|date('d/m/Y') }}</td>
+                                    <td>{{facture.commande.prixTTC }}</td>
+                                 {# <td><a href="{{ path('ecommerce_facturesPDF', { 'id' : facture.id }) }}" target="blank"><i class="icon-refresh"></i></a></td> #}
+                                 <td><a href="#" target="blank"><i class="icon-refresh"></i></a></td>
+                                 
+
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </form>
+    
+            </div>
+		
+		</div>
+	</div>
+{%endblock%}

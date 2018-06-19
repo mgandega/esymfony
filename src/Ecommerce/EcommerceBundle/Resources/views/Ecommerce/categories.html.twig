@@ -1,0 +1,6 @@
+{% for categories in cat %}
+
+{#{{dump(categories)}}#}
+<a href="{{path('mescategories', {'category': categories.id})}}">{{categories.nom}}</a><br/>
+
+{% endfor %}

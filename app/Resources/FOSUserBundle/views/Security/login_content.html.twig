@@ -1,0 +1,49 @@
+{% if error %}   
+    <div class="alert alert-danger">
+         <strong>{{ error.messageKey|trans(error.messageData, 'security') }}</strong> 
+    </div>
+{% endif %}
+
+
+        <div class="span12">
+            <h2>Connexion</h2>
+            <div id="collapseOne" class="accordion-body collapse in">
+                <div class="accordion-inner">
+                    <div class="span4">
+                        <h4>Pas encore inscrit ?</h4>
+                        <em>
+                            nous vous invitons à vous inscrire<br />
+                            afin de passer votre commande et de manger équilibré.
+                        </em>
+                        <br /><br />
+                        <a href="{{path('fos_user_registration_register')}}" class="btn btn-primary">S'inscrire</a>
+                        
+                    </div>
+                    
+                    <div class="span4 offset2">
+                        <h4>Connexion</h4>
+                        <form action="{{ path("fos_user_security_check") }}" method="post">
+    {% if csrf_token %}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    {% endif %}
+
+        <label for="username">Nom d'utilisateur</label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+    <label for="password">Mot de passe</label>
+    <input type="password" id="password" name="_password" required="required" />
+    <br/>
+
+    <span >Se rappeler de moi</span>
+	<input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    <br/><br/>
+
+    <input type="submit" id="_submit" name="_submit" value="Valider" />
+</form>
+                    </div>
+                    <div class="span10">
+                        <a href="{{path('fos_user_resetting_request')}}">Mot de passe perdu ?</a>
+                    </div>
+                </div>
+            </div>
+        </div>

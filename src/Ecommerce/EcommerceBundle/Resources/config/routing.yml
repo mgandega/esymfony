@@ -1,0 +1,94 @@
+
+ecommerce_homepage:
+    path:     /
+    defaults: { _controller: EcommerceEcommerceBundle:Ecommerce:index}
+
+ecommerce_cron:
+    path:     /cron
+    defaults: { _controller: EcommerceEcommerceBundle:Ecommerce:cron}
+
+ecommerce_inscription:
+    path:     /inscription.{format}
+    defaults: {_controller: EcommerceEcommerceBundle:Ecommerce:inscription, format: php }
+    
+ecommerce_connexion:
+    path:     /connexion.{format}
+    defaults: {_controller: EcommerceEcommerceBundle:Ecommerce:connexion, format: php }
+
+ecommerce_adresse:
+    path:     /adresses.{format}
+    defaults: {_controller: EcommerceEcommerceBundle:Ecommerce:adresses, format: php }
+
+ecommerce_facture:
+    path:     /facture.{format}
+    defaults: {_controller: EcommerceEcommerceBundle:Ecommerce:facture, format: php }
+
+ecommerce_facturesPDF:
+    path:     /factures/pdf/{id}.{format}
+    defaults: {_controller: EcommerceEcommerceBundle:Ecommerce:facturesPDF, format: php }
+
+
+ecommerce_livraison:
+    path:     /livraison.{format}
+    defaults: {_controller: EcommerceEcommerceBundle:Ecommerce:livraison, format: php }
+
+ecommerce_produit:
+    path:     /produit/{id}.{format}
+    defaults: {_controller: EcommerceEcommerceBundle:Ecommerce:produit, format: php }
+
+ecommerce_texte:
+    path:     /texte.{format}
+    defaults: {_controller: EcommerceEcommerceBundle:Ecommerce:texte, format: php }
+
+ecommerce_validation:
+    path:     /validation.{format}
+    defaults: {_controller: EcommerceEcommerceBundle:Ecommerce:validation, format: php }
+
+ecommerce_panier:
+    path:     /panier
+    defaults: {_controller: EcommerceEcommerceBundle:Ecommerce:panier, format: php }
+
+ecommerce_mon-compte:
+    path:     /mon-compte.{format}
+    defaults: {_controller: EcommerceEcommerceBundle:Ecommerce:moncompte, format: php }
+
+ecommerce_mot-de-passe-perdu:
+    path:     /mot-de-passe-perdu.{format}
+    defaults: {_controller: EcommerceEcommerceBundle:Ecommerce:motdepasseperdu, format: php }
+
+ecommerce_nouveau-mot-de-passe:
+    path:     /nouveau-mot-de-passe.{format}
+    defaults: {_controller: EcommerceEcommerceBundle:Ecommerce:nouveaumotdepasse, format: php }
+
+mescategories:
+    path: /mescategories/{category}
+    defaults: {_controller: EcommerceEcommerceBundle:Ecommerce:mescategories}
+
+ecommerce_recherchetraitement:
+    path: /recherchetraitement
+    defaults: {_controller: EcommerceEcommerceBundle:Ecommerce:recherchetraitement}
+
+ecommerce_ajouter:
+    path:     /ajouter/{id}.{format}
+    defaults: {_controller: EcommerceEcommerceBundle:Ecommerce:ajouter, format: php }
+
+ecommerce_supprimer:
+    path:     /supprimer/{id}.{format}
+    defaults: {_controller: EcommerceEcommerceBundle:Ecommerce:supprimer, format: php }
+
+livraionAdresseSuppression:
+    path:     /livraison/adresse/suppression/{id}.{format}
+    defaults: {_controller: EcommerceEcommerceBundle:Ecommerce:livraionAdresseSuppression, format: php }
+
+setLivraisonOnSession:
+    path:     /setLivraisonOnSession
+    defaults: { _controller: EcommerceEcommerceBundle:Ecommerce:setLivraisonOnSession}
+
+prepareCommande:
+    path:     /prepareCommande
+    defaults: { _controller: EcommerceEcommerceBundle:Commandes:prepareCommande}
+
+validationCommande:
+    path:     /api/banque/{id}
+    defaults: { _controller: EcommerceEcommerceBundle:Commandes:validationCommande}
+

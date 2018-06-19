@@ -1,0 +1,24 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:      
+    database_host: localhost
+    database_port: null
+    database_name: mougan6_ecom
+    database_user: mougan6_ecom
+    database_password: 1internet@
+    
+    # You should uncomment this if you want to use pdo_sqlite
+    #database_path: '%kernel.project_dir%/var/data/data.sqlite
+    
+    mailer_transport: smtp
+    mailer_encryption: ssl
+    mailer_port: 465
+    mailer_host: smtp.gmail.com
+    mailer_user: mgandega@gmail.com
+    mailer_password: informatique
+    
+      
+
+    # A secret key that's used to generate certain security-related tokens
+    secret: ThisTokenIsNotSoSecretChangeIt
